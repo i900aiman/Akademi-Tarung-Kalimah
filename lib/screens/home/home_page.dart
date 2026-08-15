@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saderi_silat/screens/home/kelas_terdekat.dart';
+import 'package:saderi_silat/screens/program/program_page.dart';
 import 'package:saderi_silat/screens/timeline/timeline_schedule.dart';
 import '../../data/dummy_data.dart';
 import '../../theme/app_theme.dart';
@@ -50,11 +51,6 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.notifications_none_outlined),
                   ),
                 ],
               ),
@@ -121,36 +117,38 @@ class HomePage extends StatelessWidget {
                             //    ),
                             //  ),
                             const SizedBox(height: 16), // Jarak yang lebih baik
-                            ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppTheme.primaryGreen,
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                  vertical: 10,
-                                ),
-                                elevation:
-                                    2, // Tambah sedikit bayang pada butang
-                              ),
-                              child: const Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(
-                                    'Daftar Sekarang',
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  SizedBox(width: 6),
-                                  Icon(Icons.arrow_forward, size: 16),
-                                ],
-                              ),
-                            ),
+                            // ElevatedButton(
+                            //   onPressed: () {
+
+                            //   },
+                            //   style: ElevatedButton.styleFrom(
+                            //     backgroundColor: AppTheme.primaryGreen,
+                            //     foregroundColor: Colors.white,
+                            //     shape: RoundedRectangleBorder(
+                            //       borderRadius: BorderRadius.circular(20),
+                            //     ),
+                            //     padding: const EdgeInsets.symmetric(
+                            //       horizontal: 20,
+                            //       vertical: 10,
+                            //     ),
+                            //     elevation:
+                            //         2, // Tambah sedikit bayang pada butang
+                            //   ),
+                            //   child: const Row(
+                            //     mainAxisSize: MainAxisSize.min,
+                            //     children: [
+                            //       Text(
+                            //         'Daftar Sekarang',
+                            //         style: TextStyle(
+                            //           fontSize: 13,
+                            //           fontWeight: FontWeight.w600,
+                            //         ),
+                            //       ),
+                            //       SizedBox(width: 6),
+                            //       Icon(Icons.arrow_forward, size: 16),
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
@@ -169,7 +167,14 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => ProgramPage(),
+                          ),
+                        );
+                    },
                     child: const Text(
                       'Lihat semua',
                       style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
@@ -203,62 +208,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Section: Kelas Terdekat
-              KelasTerdekatSection(latihanList: latihanList, maxItems: 4),
-              // const Text(
-              //   'Kelas Terdekat',
-              //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              // ),
-              // const SizedBox(height: 10),
-              // Container(
-              //   padding: const EdgeInsets.all(12),
-              //   decoration: BoxDecoration(
-              //     color: Colors.white,
-              //     borderRadius: BorderRadius.circular(16),
-              //   ),
-              //   child: Row(
-              //     children: [
-              //       Container(
-              //         padding: const EdgeInsets.all(10),
-              //         decoration: BoxDecoration(
-              //           color: AppTheme.primaryDark,
-              //           borderRadius: BorderRadius.circular(12),
-              //         ),
-              //         child: const Icon(
-              //           Icons.calendar_month,
-              //           color: Colors.white,
-              //           size: 24,
-              //         ),
-              //       ),
-              //       const SizedBox(width: 12),
-              //       const Expanded(
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Text(
-              //               'Silat Dewasa',
-              //               style: TextStyle(fontWeight: FontWeight.bold),
-              //             ),
-              //             SizedBox(height: 4),
-              //             Text(
-              //               'Hari ini • 7:30 malam',
-              //               style: TextStyle(
-              //                 fontSize: 12,
-              //                 color: AppTheme.textMuted,
-              //               ),
-              //             ),
-              //             Text(
-              //               'Dewan Utama',
-              //               style: TextStyle(
-              //                 fontSize: 12,
-              //                 color: AppTheme.textMuted,
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              KelasTerdekatSection(latihanList: latihanList, maxItems: 1),
             ],
           ),
         ),

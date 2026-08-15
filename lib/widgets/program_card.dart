@@ -40,20 +40,11 @@ class ProgramCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                  child: Image.network(
+                  child: Image.asset(
                 program.imageUrls.first,
                     height: 110,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                  ),
-                ),
-                Positioned(
-                  top: 8,
-                  left: 8,
-                  child: CircleAvatar(
-                    radius: 12,
-                    backgroundColor: AppTheme.primaryGreen,
-                    child: const Icon(Icons.person, size: 14, color: Colors.white),
                   ),
                 ),
               ],
