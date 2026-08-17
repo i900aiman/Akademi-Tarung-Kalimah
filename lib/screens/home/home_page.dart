@@ -22,55 +22,57 @@ class HomePage extends StatelessWidget {
               // Header Profil & Notification
               Row(
                 children: [
-                  // const CircleAvatar(
-                  //   radius: 20,
-                  //   backgroundColor: AppTheme.primaryDark,
-                  //   child: Icon(Icons.shield, color: Colors.amber, size: 20),
-                  // ),
-                  Container(
-                    height: 50,
-                    width: 50,
-                    child: Image.asset("assets/images/atk_saderi_logo.jpeg"),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      height: 46,
+                      width: 46,
+                      color: AppTheme.lightGreen,
+                      child: Image.asset(
+                        "assets/images/atk_saderi_logo.jpeg",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 12),
                   const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Selamat datang',
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: 12,
                           color: AppTheme.textMuted,
                         ),
                       ),
+                      SizedBox(height: 2),
                       Text(
                         'Akademi Tarung Kalimah',
                         style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: AppTheme.textDark,
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 20),
 
               // Banner Promosi
+              // NOTA: buang 'margin: horizontal 16' yang asal ada di sini —
+              // SingleChildScrollView atas dah bagi padding 16 kat semua
+              // child, so margin tambahan tu buat banner jadi lebih
+              // sempit (double inset) berbanding section lain kat bawah.
               Container(
                 height: 180,
                 width: double.infinity,
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                ), // Tambah margin jika perlu seperti di screenshot
-                // Kita keluarkan BoxDecoration warna hijau dari Container induk
-                // kerana kita akan gunakan imej sebagai latar belakang sepenuhnya.
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Stack(
                     children: [
                       // Lapisan 1: Imej Latar Belakang (Memenuhi keseluruhan kad)
-                      // Kita tidak gunakan Positioned di sini supaya ia ikut saiz induk.
                       SizedBox(
                         width: double.infinity,
                         height: double.infinity,
@@ -156,7 +158,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
 
               // Section: Program Pilihan
               Row(
@@ -164,25 +166,37 @@ class HomePage extends StatelessWidget {
                 children: [
                   const Text(
                     'Program Pilihan',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: -0.3,
+                      color: AppTheme.textDark,
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
-                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => ProgramPage(),
-                          ),
-                        );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => ProgramPage()),
+                      );
                     },
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      minimumSize: const Size(0, 0),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
                     child: const Text(
                       'Lihat semua',
-                      style: TextStyle(color: AppTheme.textMuted, fontSize: 12),
+                      style: TextStyle(
+                        color: AppTheme.textMuted,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               SizedBox(
                 height: 180,
                 child: ListView.separated(
@@ -205,7 +219,7 @@ class HomePage extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
 
               // Section: Kelas Terdekat
               KelasTerdekatSection(latihanList: latihanList, maxItems: 1),

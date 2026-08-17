@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:saderi_silat/screens/home/info/info_pill.dart';
+import 'package:saderi_silat/screens/home/info/info_row.dart';
 import '../models/program_model.dart';
 import '../theme/app_theme.dart';
 
@@ -20,72 +22,76 @@ class ProgramCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: isGrid ? double.infinity : 180,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: Colors.black.withOpacity(0.05)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.03),
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
-        ),
+        clipBehavior: Clip.antiAlias,
+        decoration: AppTheme.cardDecoration(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Image with Avatar Badge
+            // Imej + label peringkat terapung di atas imej (gantikan baris
+            // teks berasingan — kurangkan bilangan baris, senang diimbas)
             Stack(
               children: [
-                ClipRRect(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                  child: Image.asset(
-                program.imageUrls.first,
-                    height: 110,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                Image.asset(
+                  program.imageUrls.first,
+                  height: 110,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+                // gradient nipis kat bawah imej supaya pill senang dibaca
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    height: 44,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Colors.black.withOpacity(0),
+                          Colors.black.withOpacity(0.22),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 10,
+                  bottom: 8,
+                  child: InfoPill(
+                    label: program.level,
+                    icon: Icons.signal_cellular_alt,
+                    background: Colors.white.withOpacity(0.92),
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     program.title,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 14,
+                      color: AppTheme.textDark,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Row(
-                    children: [
-                      const Icon(Icons.signal_cellular_alt, size: 12, color: AppTheme.primaryGreen),
-                      const SizedBox(width: 4),
-                      Text(
-                        program.level,
-                        style: const TextStyle(fontSize: 11, color: AppTheme.textMuted),
-                      ),
-                    ],
-                  ),
                   if (isGrid) ...[
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        const Icon(Icons.access_time, size: 12, color: AppTheme.primaryGreen),
-                        const SizedBox(width: 4),
-                        Text(program.days, style: const TextStyle(fontSize: 11, color: AppTheme.textMuted)),
-                      ],
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        const Icon(Icons.location_on_outlined, size: 12, color: AppTheme.primaryGreen),
-                        const SizedBox(width: 4),
-                        Text(program.time, style: const TextStyle(fontSize: 11, color: AppTheme.textMuted)),
-                      ],
+                    const SizedBox(height: 8),
+                    // NOTA: asal fail ni ikon 'access_time' dipasang dengan
+                    // program.days & ikon 'location_on_outlined' dengan
+                    // program.time — tertukar. Dah betulkan kat bawah.
+                    InfoRow(icon: Icons.calendar_today_outlined, text: program.days),
+                    InfoRow(
+                      icon: Icons.access_time,
+                      text: program.time,
+                      padding: EdgeInsets.zero,
                     ),
                   ],
                 ],

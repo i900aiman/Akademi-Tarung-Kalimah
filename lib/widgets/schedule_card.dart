@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:saderi_silat/screens/home/info/info_row.dart';
 import '../models/program_model.dart';
 import '../theme/app_theme.dart';
 
@@ -13,18 +14,19 @@ class ScheduleCard extends StatelessWidget {
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.black.withOpacity(0.05)),
-      ),
+      padding: const EdgeInsets.all(14),
+      decoration: AppTheme.cardDecoration(),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 20,
-            backgroundColor: AppTheme.lightGreen,
+          Container(
+            width: 40,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: AppTheme.lightGreen,
+              borderRadius: BorderRadius.circular(12),
+            ),
             child: const Icon(Icons.groups, color: AppTheme.primaryDark, size: 20),
           ),
           const SizedBox(width: 12),
@@ -32,11 +34,22 @@ class ScheduleCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(schedule.title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                Text(
+                  schedule.title,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 15,
+                    color: AppTheme.textDark,
+                  ),
+                ),
                 const SizedBox(height: 6),
-                _buildInfoRow(Icons.access_time, schedule.time),
-                _buildInfoRow(Icons.location_on_outlined, schedule.location),
-                _buildInfoRow(Icons.person_outline, schedule.instructor),
+                InfoRow(icon: Icons.access_time, text: schedule.time),
+                InfoRow(icon: Icons.location_on_outlined, text: schedule.location),
+                InfoRow(
+                  icon: Icons.person_outline,
+                  text: schedule.instructor,
+                  padding: EdgeInsets.zero,
+                ),
               ],
             ),
           ),
@@ -55,19 +68,6 @@ class ScheduleCard extends StatelessWidget {
           //     ),
           //   ),
           // )
-        ],
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(IconData icon, String text) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4.0),
-      child: Row(
-        children: [
-          Icon(icon, size: 14, color: AppTheme.primaryGreen),
-          const SizedBox(width: 6),
-          Text(text, style: const TextStyle(fontSize: 12, color: AppTheme.textMuted)),
         ],
       ),
     );

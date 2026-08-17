@@ -106,48 +106,6 @@ class _ProgramDetailPageState extends State<ProgramDetailPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 16),
-
-                  const Text(
-                    'Yuran Bulanan',
-                    style: TextStyle(fontSize: 12, color: AppTheme.textMuted),
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        widget.program.price,
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: AppTheme.primaryDark,
-                        ),
-                      ),
-                      const Text(
-                        ' / bulan',
-                        style: TextStyle(color: AppTheme.textMuted),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-
-                  // Submit Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.primaryGreen,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                      child: const Text(
-                        'Daftar Program',
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
