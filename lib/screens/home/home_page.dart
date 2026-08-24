@@ -197,28 +197,51 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                height: 180,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: DummyData.programs.length,
-                  separatorBuilder: (_, __) => const SizedBox(width: 12),
-                  itemBuilder: (context, index) {
-                    final program = DummyData.programs[index];
-                    return ProgramCard(
+             SizedBox(
+  height: 180,
+  child: LayoutBuilder(
+    builder: (context, constraints) {
+      const cardWidth = 245.0;
+      const spacing = 12.0;
+
+      final totalWidth =
+          (DummyData.programs.length * cardWidth) +
+          ((DummyData.programs.length - 1) * spacing);
+
+      final horizontalPadding =
+          ((constraints.maxWidth - totalWidth) / 2).clamp(0.0, double.infinity);
+
+      return ListView.separated(
+        scrollDirection: Axis.horizontal,
+        padding: EdgeInsets.symmetric(
+          horizontal: horizontalPadding,
+        ),
+        itemCount: DummyData.programs.length,
+        separatorBuilder: (_, __) => const SizedBox(width: spacing),
+        itemBuilder: (context, index) {
+          final program = DummyData.programs[index];
+
+          return SizedBox(
+            width: cardWidth,
+            child: ProgramCard(
+              program: program,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ProgramDetailPage(
                       program: program,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => ProgramDetailPage(program: program),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        },
+      );
+    },
+  ),
+),
               const SizedBox(height: 24),
 
               // Section: Kelas Terdekat

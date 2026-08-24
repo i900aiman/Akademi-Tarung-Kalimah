@@ -52,6 +52,7 @@ class DummyData {
         'assets/images/silat_seni_3.jpeg',
       ],
     ),
+    
   ];
 
   static List<ScheduleClass> scheduleClasses = [

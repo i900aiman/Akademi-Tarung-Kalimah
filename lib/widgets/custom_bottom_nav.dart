@@ -30,6 +30,11 @@ class CustomBottomNav extends StatelessWidget {
           selectedIcon: Icon(Icons.grid_view, color: AppTheme.primaryDark),
           label: 'Program',
         ),
+         NavigationDestination(
+          icon: Icon(Icons.image_outlined),
+          selectedIcon: Icon(Icons.image_outlined, color: AppTheme.primaryDark),
+          label: 'Gallery',
+        ),
         NavigationDestination(
           icon: Icon(Icons.calendar_today_outlined),
           selectedIcon: Icon(Icons.calendar_today, color: AppTheme.primaryDark),
