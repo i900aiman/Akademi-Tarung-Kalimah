@@ -148,31 +148,31 @@ class GalleryAlbumCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    OutlinedButton.icon(
-                      onPressed: onEdit,
-                      icon: const Icon(Icons.edit_outlined, size: 18),
-                      label: const Text('Edit'),
-                      style: OutlinedButton.styleFrom(
-                        foregroundColor: Colors.black87,
-                        side: BorderSide(color: Colors.grey.shade300),
-                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    IconButton(
-                      onPressed: onDelete,
-                      icon: const Icon(Icons.delete_outline, color: Colors.red),
-                      style: IconButton.styleFrom(
-                        side: const BorderSide(color: Color(0xFFFFCDD2)),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
+                    // const SizedBox(width: 10),
+                    // OutlinedButton.icon(
+                    //   onPressed: onEdit,
+                    //   icon: const Icon(Icons.edit_outlined, size: 18),
+                    //   label: const Text('Edit'),
+                    //   style: OutlinedButton.styleFrom(
+                    //     foregroundColor: Colors.black87,
+                    //     side: BorderSide(color: Colors.grey.shade300),
+                    //     padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(12),
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(width: 10),
+                    // IconButton(
+                    //   onPressed: onDelete,
+                    //   icon: const Icon(Icons.delete_outline, color: Colors.red),
+                    //   style: IconButton.styleFrom(
+                    //     side: const BorderSide(color: Color(0xFFFFCDD2)),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(12),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ],

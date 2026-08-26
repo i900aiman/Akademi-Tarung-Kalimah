@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saderi_silat/api/get.dart';
 import 'package:saderi_silat/models/gallery_model.dart';
+import 'package:saderi_silat/screens/gallery/gallery_album_detail_page.dart';
 import 'package:saderi_silat/widgets/gallery_album_card.dart';
 
 class GalleryPage extends StatefulWidget {
@@ -61,18 +62,18 @@ class _GalleryPageState extends State<GalleryPage> {
       ),
     );
 
-    if (confirmed == true) {
-      try {
-        await _service.deleteAlbum(album.id);
-        _loadAlbums();
-      } catch (e) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Gagal padam album.')),
-          );
-        }
-      }
-    }
+    // if (confirmed == true) {
+    //   try {
+    //     await _service.deleteAlbum(album.id);
+    //     _loadAlbums();
+    //   } catch (e) {
+    //     if (mounted) {
+    //       ScaffoldMessenger.of(context).showSnackBar(
+    //         const SnackBar(content: Text('Gagal padam album.')),
+    //       );
+    //     }
+    //   }
+    // }
   }
 
   @override
@@ -160,23 +161,6 @@ class _GalleryPageState extends State<GalleryPage> {
           ),
         ],
       ),
-      const SizedBox(height: 14),
-      SizedBox(
-        width: double.infinity,
-        child: ElevatedButton.icon(
-          onPressed: () {
-            // TODO: navigate to create-album flow
-          },
-          icon: const Icon(Icons.add_rounded),
-          label: const Text('Cipta Album & Muat Naik Gambar'),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: _green,
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-          ),
-        ),
-      ),
       const SizedBox(height: 24),
       if (_loading)
         const Padding(
@@ -195,15 +179,25 @@ class _GalleryPageState extends State<GalleryPage> {
         )
       else
         ..._albumPage!.data.map(
-          (album) => GalleryAlbumCard(
+          (album) => 
+           GalleryAlbumCard(
             album: album,
             onView: () {
-              // TODO: navigate to album detail page
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => GalleryAlbumDetailPage(
+                    albumId: album.id,
+                    onEdit: () {
+                      // TODO: navigate to edit-album form
+                    },
+                    onChanged: _loadAlbums,
+                  ),
+                ),
+              );
             },
-            onEdit: () {
-              // TODO: navigate to edit-album form
-            },
-            onDelete: () => _confirmDelete(album),
+            onEdit: () {},
+            onDelete: () {},
           ),
         ),
     ];

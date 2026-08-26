@@ -25,7 +25,7 @@ class GalleryAlbum {
       title: json['title'] as String? ?? '',
       description: json['description'] as String? ?? '',
       activityDate: DateTime.parse(json['activity_date'] as String),
-      imagesCount: json['photo_count'] as int? ?? 0,
+      imagesCount: json['images_count'] as int? ?? 0,
       coverUrl: json['cover_url'] as String? ?? '',
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
@@ -66,7 +66,7 @@ class GalleryAlbumPage {
       page: json['page'] as int? ?? 1,
       perPage: json['per_page'] as int? ?? 20,
       total: json['total'] as int? ?? 0,
-      lastPage: json['last_page'] as int? ?? 1,
+      lastPage: json['total_pages'] as int? ?? 1,
     );
   }
 
