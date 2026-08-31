@@ -33,7 +33,7 @@ class CustomBottomNav extends StatelessWidget {
          NavigationDestination(
           icon: Icon(Icons.image_outlined),
           selectedIcon: Icon(Icons.image_outlined, color: AppTheme.primaryDark),
-          label: 'Galleri',
+          label: 'Galeri',
         ),
         NavigationDestination(
           icon: Icon(Icons.calendar_today_outlined),
