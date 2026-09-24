@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:saderi_silat/screens/gallery/gallery_page.dart';
 import 'package:saderi_silat/screens/timeline/timeline_schedule.dart';
+import 'package:saderi_silat/screens/yuran/yuran_search.dart';
 import 'theme/app_theme.dart';
 import 'widgets/custom_bottom_nav.dart';
 import 'screens/home/home_page.dart';
@@ -37,6 +38,7 @@ class _MainTabWrapperState extends State<MainTabWrapper> {
 
   final List<Widget> _pages = const [
     HomePage(),
+    YuranSearchPage(),
     ProgramPage(),
     GalleryPage(),
     LatihanTimelineScreen(),

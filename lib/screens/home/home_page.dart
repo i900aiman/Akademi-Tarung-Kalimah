@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:saderi_silat/screens/home/kelas_terdekat.dart';
+import 'package:saderi_silat/screens/home/tempahan/tempahan.dart';
 import 'package:saderi_silat/screens/program/program_page.dart';
 import 'package:saderi_silat/screens/timeline/timeline_schedule.dart';
 import '../../data/dummy_data.dart';
@@ -240,6 +241,20 @@ class HomePage extends StatelessWidget {
         },
       );
     },
+  ),
+),
+
+              const SizedBox(height: 24),
+            Padding(
+  padding: const EdgeInsets.all(12.0),
+  child: GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => const TempahanPage()),
+      );
+    },
+    child: const Text("Tempah Jersi"),
   ),
 ),
               const SizedBox(height: 24),

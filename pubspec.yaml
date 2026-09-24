@@ -48,6 +48,7 @@ dev_dependencies:
   timeline_tile: ^2.0.0
   http: ^1.6.0
   intl: ^0.19.0
+  image_picker: ^1.2.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

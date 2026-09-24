@@ -25,6 +25,11 @@ class CustomBottomNav extends StatelessWidget {
           selectedIcon: Icon(Icons.home, color: AppTheme.primaryDark),
           label: 'Utama',
         ),
+         NavigationDestination(
+          icon: Icon(Icons.monetization_on_outlined),
+          selectedIcon: Icon(Icons.monetization_on, color: AppTheme.primaryDark),
+          label: 'Yuran',
+        ),
         NavigationDestination(
           icon: Icon(Icons.grid_view_outlined),
           selectedIcon: Icon(Icons.grid_view, color: AppTheme.primaryDark),
