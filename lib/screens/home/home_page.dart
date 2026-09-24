@@ -92,69 +92,6 @@ class HomePage extends StatelessWidget {
           color: AppTheme.primaryDark.withOpacity(0.3), // Tambah sedikit kegelapan
         ),
         */
-
-                      // Lapisan 3: Kandungan Teks dan Butang
-                      Padding(
-                        padding: const EdgeInsets.all(
-                          24.0,
-                        ), // Padding yang lebih besar sedikit seperti di design asal
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment
-                              .center, // Pusatkan kandungan secara menegak
-                          children: [
-                            //  Container(
-
-                            //   decoration: BoxDecoration(color: Colors.grey.shade100, borderRadius: BorderRadius.circular(20),),
-                            //    child: Padding(
-                            //      padding: const EdgeInsets.all(8.0),
-                            //      child: Text(
-                            //       'Bina Disiplin,\nKuatkan\nJati Diri',
-                            //       style: TextStyle(
-                            //         color: Colors.black,
-                            //         fontSize: 15, // Besarkan sedikit saiz fon
-                            //         fontWeight: FontWeight.bold,
-                            //         height: 1.2,
-                            //       ),
-                            //                    ),
-                            //    ),
-                            //  ),
-                            const SizedBox(height: 16), // Jarak yang lebih baik
-                            // ElevatedButton(
-                            //   onPressed: () {
-
-                            //   },
-                            //   style: ElevatedButton.styleFrom(
-                            //     backgroundColor: AppTheme.primaryGreen,
-                            //     foregroundColor: Colors.white,
-                            //     shape: RoundedRectangleBorder(
-                            //       borderRadius: BorderRadius.circular(20),
-                            //     ),
-                            //     padding: const EdgeInsets.symmetric(
-                            //       horizontal: 20,
-                            //       vertical: 10,
-                            //     ),
-                            //     elevation:
-                            //         2, // Tambah sedikit bayang pada butang
-                            //   ),
-                            //   child: const Row(
-                            //     mainAxisSize: MainAxisSize.min,
-                            //     children: [
-                            //       Text(
-                            //         'Daftar Sekarang',
-                            //         style: TextStyle(
-                            //           fontSize: 13,
-                            //           fontWeight: FontWeight.w600,
-                            //         ),
-                            //       ),
-                            //       SizedBox(width: 6),
-                            //       Icon(Icons.arrow_forward, size: 16),
-                            //     ],
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -198,65 +135,138 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 10),
-             SizedBox(
-  height: 180,
-  child: LayoutBuilder(
-    builder: (context, constraints) {
-      const cardWidth = 245.0;
-      const spacing = 12.0;
+              SizedBox(
+                height: 180,
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    const cardWidth = 245.0;
+                    const spacing = 12.0;
 
-      final totalWidth =
-          (DummyData.programs.length * cardWidth) +
-          ((DummyData.programs.length - 1) * spacing);
+                    final totalWidth =
+                        (DummyData.programs.length * cardWidth) +
+                        ((DummyData.programs.length - 1) * spacing);
 
-      final horizontalPadding =
-          ((constraints.maxWidth - totalWidth) / 2).clamp(0.0, double.infinity);
+                    final horizontalPadding =
+                        ((constraints.maxWidth - totalWidth) / 2).clamp(
+                          0.0,
+                          double.infinity,
+                        );
 
-      return ListView.separated(
-        scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.symmetric(
-          horizontal: horizontalPadding,
-        ),
-        itemCount: DummyData.programs.length,
-        separatorBuilder: (_, __) => const SizedBox(width: spacing),
-        itemBuilder: (context, index) {
-          final program = DummyData.programs[index];
+                    return ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: horizontalPadding,
+                      ),
+                      itemCount: DummyData.programs.length,
+                      separatorBuilder: (_, __) =>
+                          const SizedBox(width: spacing),
+                      itemBuilder: (context, index) {
+                        final program = DummyData.programs[index];
 
-          return SizedBox(
-            width: cardWidth,
-            child: ProgramCard(
-              program: program,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ProgramDetailPage(
-                      program: program,
-                    ),
-                  ),
-                );
-              },
-            ),
-          );
-        },
-      );
-    },
-  ),
-),
+                        return SizedBox(
+                          width: cardWidth,
+                          child: ProgramCard(
+                            program: program,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      ProgramDetailPage(program: program),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
 
               const SizedBox(height: 24),
-            Padding(
-  padding: const EdgeInsets.all(12.0),
-  child: GestureDetector(
-    onTap: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => const TempahanPage()),
-      );
-    },
-    child: const Text("Tempah Jersi"),
-  ),
-),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(18),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const TempahanPage()),
+                    );
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [AppTheme.primaryGreen, AppTheme.primaryDark],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppTheme.primaryGreen.withValues(alpha: 0.28),
+                          blurRadius: 16,
+                          offset: const Offset(0, 6),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.white.withValues(alpha: 0.18),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Icon(
+                            Icons.checkroom_rounded,
+                            color: Colors.white,
+                            size: 22,
+                          ),
+                        ),
+                        const SizedBox(width: 14),
+                        const Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Tempah Jersi & Uniform',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 14,
+                                ),
+                              ),
+                              SizedBox(height: 2),
+                              Text(
+                                'Tempahan mudah, terus dari sini',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 11.5,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: const BoxDecoration(
+                            color: Colors.white24,
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.arrow_forward_rounded,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               const SizedBox(height: 24),
 
               // Section: Kelas Terdekat
