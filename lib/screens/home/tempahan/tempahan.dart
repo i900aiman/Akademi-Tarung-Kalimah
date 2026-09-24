@@ -30,16 +30,26 @@ class _TempahanPageState extends State<TempahanPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         title: const Text('Tempahan'),
         centerTitle: true,
         elevation: 0,
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        titleTextStyle: const TextStyle(
+          color: AppTheme.textDark,
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+        ),
         bottom: TabBar(
           controller: _tabController,
           labelColor: AppTheme.primaryGreen,
           unselectedLabelColor: AppTheme.textMuted,
           indicatorColor: AppTheme.primaryGreen,
-          labelStyle: const TextStyle(fontWeight: FontWeight.w700),
+          indicatorWeight: 2.5,
+          labelStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 13),
           tabs: const [
             Tab(text: 'Tempah Jersi'),
             Tab(text: 'Tempah Uniform'),
@@ -48,7 +58,7 @@ class _TempahanPageState extends State<TempahanPage>
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
+        children: const [
           JersiFormPage(),
           UniformFormPage(),
         ],

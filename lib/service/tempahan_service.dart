@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:saderi_silat/models/tempahan_model.dart';
-
 
 /// Service untuk semua panggilan API berkaitan Tempahan (Orders).
 ///
@@ -48,7 +47,7 @@ class TempahanService {
   /// mesti ada `campaign_id`, backend tentukan jenis ikut kempen tu.
   static Future<bool> submitOrder({
     required Map<String, String> fields,
-    File? receipt,
+    XFile? receipt,
   }) async {
     final uri = Uri.parse('$baseUrl/api/v1/orders');
     final request = http.MultipartRequest('POST', uri);
@@ -56,8 +55,11 @@ class TempahanService {
     request.fields.addAll(fields);
 
     if (receipt != null) {
+      // Guna bytes (bukan fromPath) — fromPath guna dart:io File stream
+      // yang tak jalan kat Flutter Web.
+      final bytes = await receipt.readAsBytes();
       request.files.add(
-        await http.MultipartFile.fromPath('receipt', receipt.path),
+        http.MultipartFile.fromBytes('receipt', bytes, filename: receipt.name),
       );
     }
 

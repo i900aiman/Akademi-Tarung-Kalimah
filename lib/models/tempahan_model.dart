@@ -1,6 +1,8 @@
 
 
 import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+
 
 /// Model untuk 1 gambar produk kempen
 class CampaignPhoto {
@@ -91,6 +93,10 @@ class OrderCampaign {
 /// Model untuk Tempahan Jersi
 /// Ikut field JSON: campaign_id, full_name, jersey_name, phone, branch,
 /// jersey_type, size, sleeve_option, quantity, remarks, payment_status, receipt
+
+/// Model untuk Tempahan Jersi
+/// Ikut field JSON: campaign_id, full_name, jersey_name, phone, branch,
+/// jersey_type, size, sleeve_option, quantity, remarks, payment_status, receipt
 class JerseyTempahan {
   final int campaignId;
   final String fullName;
@@ -103,7 +109,7 @@ class JerseyTempahan {
   final int quantity;
   final String? remarks;
   final String paymentStatus; // unpaid, deposit, paid
-  final File? receipt; // wajib jika deposit / paid
+  final XFile? receipt; // wajib jika deposit / paid
 
   JerseyTempahan({
     required this.campaignId,
@@ -183,6 +189,10 @@ class JerseyTempahan {
 /// Model untuk Tempahan Uniform
 /// Ikut field JSON: campaign_id, full_name, phone, branch, size,
 /// trouser_length, age, quantity, remarks, payment_status, receipt
+
+/// Model untuk Tempahan Uniform
+/// Ikut field JSON: campaign_id, full_name, phone, branch, size,
+/// trouser_length, age, quantity, remarks, payment_status, receipt
 class UniformTempahan {
   final int campaignId;
   final String fullName;
@@ -194,7 +204,7 @@ class UniformTempahan {
   final int quantity;
   final String? remarks;
   final String paymentStatus; // unpaid, deposit, paid
-  final File? receipt; // wajib jika deposit / paid
+  final XFile? receipt; // wajib jika deposit / paid
 
   UniformTempahan({
     required this.campaignId,
